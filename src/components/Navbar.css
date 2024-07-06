@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  
+  color: #fff;
+}
+
+.navbar-logo {
+  height: 50px;
+  cursor: pointer;
+}
+
+.hamburger {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.menu {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.menu.open {
+  display: flex;
+}
+
+.nav-button {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+}
+
+.nav-button:hover {
+  background-color: #555;
+}

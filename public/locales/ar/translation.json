@@ -1,0 +1,18 @@
+{
+    "controls": "الضوابط",
+    "rule_number": "رقم الضابط",
+    "sub_rule_number": "رقم الضابط الفرعي",
+    "description": "شرح الضابط",
+    "folder_number": "رقم المجلد",
+    "status": "الحالة",
+    "notes": "ملاحظات",
+    "concerned_departments": "الادارات المعنية",
+    "evidence_or_attachment": "الإثبات أو الإرفاق",
+    "add_control": "إضافة الضابط",
+    "view_statistics": "عرض الإحصائيات",
+    "applied_fully": "مطبق كلياً",
+    "applied_partially": "مطبق جزئياً",
+    "not_applied": "غير مطبق",
+    "search_by_rule_or_status": "بحث برقم الضابط أو الحالة"
+  }
+  

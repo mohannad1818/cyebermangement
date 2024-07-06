@@ -1,0 +1,15 @@
+.statistics-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.chart-container {
+  position: relative;
+  height: 300px; /* يمكنك تعديل هذا الحجم حسب الحاجة */
+  margin: 20px auto;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

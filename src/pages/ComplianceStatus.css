@@ -1,0 +1,89 @@
+/* تحسين التنسيق العام للصفحة */
+.commitment-container {
+  text-align: right;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+/* تنسيق العنوان */
+.commitment-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* تحسين تنسيق حقل البحث */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* تحسين تنسيق الجدول */
+.commitment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* تنسيق رؤوس الجدول */
+.commitment-table th {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: right;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* تنسيق خلايا الجدول */
+.commitment-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  text-align: right;
+  font-size: 14px;
+}
+
+/* تنسيق الصفوف البديلة في الجدول */
+.commitment-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* تنسيق الروابط */
+.commitment-table a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.commitment-table a:hover {
+  text-decoration: underline;
+}
+
+/* تحسين تنسيق الألوان للحالة */
+.status-color {
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+}
+
+.status-complete {
+  background-color: green;
+}
+
+.status-partial {
+  background-color: orange;
+}
+
+.status-not-applied {
+  background-color: red;
+}

@@ -1,0 +1,42 @@
+.home-container {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #4B0082; /* اللون الذي تستخدمه في الخلفية */
+}
+
+.home-header {
+  width: 100%;
+  padding: 20px;
+  background-color: #4B0082; /* نفس لون الخلفية */
+}
+
+.home-logo {
+  width: 150px;
+  margin: 0 auto;
+}
+
+.home-body {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-link {
+  display: block;
+  margin-top: 20px;
+  color: #4B0082;
+  text-decoration: none;
+  font-weight: bold;
+}
