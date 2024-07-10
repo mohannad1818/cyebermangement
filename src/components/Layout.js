@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { styled } from '@mui/system';
 import { Link } from 'react-router-dom';
-
+import { getEncryptedData } from '../utils/encryption'; // استيراد دوال التشفير
 const Root = styled('div')({
   display: 'flex',
 });

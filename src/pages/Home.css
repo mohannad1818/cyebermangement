@@ -1,22 +1,38 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .home-container {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: #4B0082; /* اللون الذي تستخدمه في الخلفية */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-header {
   width: 100%;
   padding: 20px;
-  background-color: #4B0082; /* نفس لون الخلفية */
+  background-color: transparent; /* جعل الهيدر شفاف */
+  display: flex;
+  justify-content: flex-start; /* وضع الشعار في أعلى يسار الصفحة */
+  align-items: flex-start; /* جعل الشعار أعلى قليلاً */
+}
+
+.logo-container {
+  padding: 10px;
+  display: inline-block;
 }
 
 .home-logo {
-  width: 150px;
-  margin: 0 auto;
+  width: 250px; /* توسيع الشعار ليكون أوضح */
 }
 
 .home-body {
@@ -24,19 +40,77 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  position: relative; /* للسماح بوضع زر بوابة الدخول في موقع متميز */
 }
 
 .home-box {
-  background-color: white;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 2s ease-in-out, moveUp 1s ease-in-out infinite alternate;
+  background-color: transparent; /* إزالة خلفية النص */
+}
+
+.home-title {
+  font-size: 2em;
+  margin: 0;
+  animation: marquee 10s linear infinite; /* جعل النص يتحرك */
+  white-space: nowrap;
+  overflow: hidden;
+  color: white; /* تغيير لون النص إلى الأبيض */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .home-link {
-  display: block;
-  margin-top: 20px;
-  color: #4B0082;
+  position: absolute;
+  right: 20px; /* وضع الزر في موقع متميز على اليمين */
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block; /* تعديل زر "بوابة الدخول" ليصبح بوتون */
+  padding: 10px 20px;
+  background-color: #4B0082;
+  color: white;
   text-decoration: none;
   font-weight: bold;
+  border-radius: 5px;
+  animation: pulse 1.5s infinite;
+  margin-top: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

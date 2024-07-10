@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AddAdmin.css';
+import { getEncryptedData } from '../utils/encryption'; // استيراد دوال التشفير
 
 const AddAdmin = () => {
   const [username, setUsername] = useState('');

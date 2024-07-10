@@ -1,62 +1,41 @@
+// src/pages/AdminDashboard.js
 import React, { useState } from 'react';
-import './AdminDashboard.css';
+import { addData } from '../FirestoreService';
 
 const AdminDashboard = () => {
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('مستخدم');
+  const [role, setRole] = useState('مستخدم'); // "مستخدم" أو "مشرف"
 
-  const handleAddUser = () => {
-    const newUser = { username, password, role };
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-    storedUsers.push(newUser);
-    localStorage.setItem('users', JSON.stringify(storedUsers));
-    alert('تمت إضافة المستخدم بنجاح!');
-    setUsername('');
+  const handleAddUser = async () => {
+    const collectionName = role === 'مشرف' ? 'admins' : 'users';
+    const newUser = { username: name, password, role };
+    await addData(collectionName, newUser);
+    setName('');
     setPassword('');
-    setRole('مستخدم');
+    alert(`تم إضافة ${role} بنجاح`);
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">لوحة تحكم المشرف</h2>
-      <div className="card">
-        <div className="card-header">
-          إضافة مستخدم جديد
-        </div>
-        <div className="card-body">
-          <div className="form-group mb-3">
-            <label>اسم المستخدم:</label>
-            <input 
-              type="text" 
-              className="form-control" 
-              value={username} 
-              onChange={(e) => setUsername(e.target.value)} 
-            />
-          </div>
-          <div className="form-group mb-3">
-            <label>كلمة المرور:</label>
-            <input 
-              type="password" 
-              className="form-control" 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-            />
-          </div>
-          <div className="form-group mb-3">
-            <label>الدور:</label>
-            <select 
-              className="form-control" 
-              value={role} 
-              onChange={(e) => setRole(e.target.value)}
-            >
-              <option value="مستخدم">مستخدم</option>
-              <option value="مشرف">مشرف</option>
-            </select>
-          </div>
-          <button onClick={handleAddUser} className="btn btn-primary">إضافة</button>
-        </div>
-      </div>
+    <div>
+      <h1>Admin Dashboard</h1>
+      <input 
+        type="text" 
+        placeholder="Name" 
+        value={name} 
+        onChange={(e) => setName(e.target.value)} 
+      />
+      <input 
+        type="password" 
+        placeholder="Password" 
+        value={password} 
+        onChange={(e) => setPassword(e.target.value)} 
+      />
+      <select value={role} onChange={(e) => setRole(e.target.value)}>
+        <option value="مستخدم">User</option>
+        <option value="مشرف">Admin</option>
+      </select>
+      <button onClick={handleAddUser}>Add User/Admin</button>
     </div>
   );
 };

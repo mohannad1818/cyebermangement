@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Commitment.css';
+import { getEncryptedData } from '../utils/encryption'; // استيراد دوال التشفير
 
 const AddControls = () => {
   const [rules, setRules] = useState([]);

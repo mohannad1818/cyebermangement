@@ -1,4 +1,3 @@
-/* تحسين التنسيق العام للصفحة */
 .commitment-container {
   text-align: right;
   padding: 20px;
@@ -8,14 +7,12 @@
   margin: 20px;
 }
 
-/* تنسيق العنوان */
 .commitment-container h1 {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
 }
 
-/* تحسين تنسيق حقل البحث */
 .search-input {
   width: 100%;
   padding: 10px;
@@ -23,17 +20,15 @@
   border-radius: 5px;
   margin-bottom: 20px;
   font-size: 16px;
-  direction: rtl; /* جعل النص من اليمين إلى اليسار */
+  direction: rtl;
 }
 
-/* تحسين تنسيق الجدول */
 .commitment-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
-/* تنسيق رؤوس الجدول */
 .commitment-table th {
   background-color: #007bff;
   color: white;
@@ -43,7 +38,6 @@
   font-size: 14px;
 }
 
-/* تنسيق خلايا الجدول */
 .commitment-table td {
   padding: 10px;
   border: 1px solid #ccc;
@@ -52,12 +46,10 @@
   font-size: 14px;
 }
 
-/* تنسيق الصفوف البديلة في الجدول */
 .commitment-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* تنسيق الروابط */
 .commitment-table a {
   color: #007bff;
   text-decoration: none;
@@ -67,7 +59,6 @@
   text-decoration: underline;
 }
 
-/* تحسين تنسيق الألوان للحالة */
 .status-color {
   font-weight: bold;
   color: white;
@@ -88,7 +79,25 @@
 .status-not-applied {
   background-color: red;
 }
-.commitment-container {
+
+.form-group {
+  margin-bottom: 15px;
+  direction: rtl;
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   direction: rtl;
   text-align: right;
 }

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Commitment.css';
-
+import { FaTachometerAlt } from 'react-icons/fa'; // استيراد الأيقونة
+import { getEncryptedData } from '../utils/encryption'; // استيراد دوال التشفير
 const CommitmentStatus = () => {
   const [rules, setRules] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate(); // استخدام useNavigate
 
   useEffect(() => {
     const savedRules = JSON.parse(localStorage.getItem('rules'));
@@ -30,8 +32,15 @@ const CommitmentStatus = () => {
     rule.number.includes(searchTerm) || rule.status.includes(searchTerm)
   );
 
+  const handleBackClick = () => {
+    navigate('/dashboard'); // التوجيه إلى صفحة dashboard عند النقر على الأيقونة
+  };
+
   return (
     <div className="commitment-container" dir="rtl">
+      <div className="back-icon" onClick={handleBackClick}>
+        <FaTachometerAlt size={30} />
+      </div>
       <h1>حالة الالتزام:</h1>
 
       <input 

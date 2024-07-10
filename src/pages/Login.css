@@ -1,62 +1,92 @@
 .login-container {
-  display: flex; /* يجعل الحاوية تستخدم flexbox لتوزيع العناصر بداخلها */
-  justify-content: space-between; /* يوزع العناصر داخل الحاوية بحيث تكون المسافة بينها متساوية */
-  align-items: center; /* يجعل العناصر تصطف عموديًا في المنتصف */
-  height: 100vh; /* يحدد ارتفاع الحاوية ليكون بطول كامل الشاشة */
-  padding: 20px; /* يضيف مسافة داخلية حول المحتوى داخل الحاوية */
-  background: linear-gradient(to right, #7d8797, #a6ddee); /* يضيف خلفية متدرجة اللون من اليسار إلى اليمين */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background: linear-gradient(to right, #d1c4e9, #90caf9);
+  position: relative;
 }
 
 .login-section {
-  width: 45%; /* يحدد عرض القسم ليكون 45% من عرض الحاوية الرئيسية */
-  padding: 20px; /* يضيف مسافة داخلية حول المحتوى داخل القسم */
-  background: #fff; /* يحدد لون خلفية القسم باللون الأبيض */
-  border-radius: 10px; /* يضيف زوايا دائرية للقسم */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* يضيف ظل خفيف حول القسم */
+  width: 400px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  direction: rtl;
 }
 
-.login-section h2 {
-  text-align: center; /* يجعل النص داخل العنوان في الوسط */
-  margin-bottom: 20px; /* يضيف مسافة سفلية أسفل العنوان */
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
 }
 
 .form-group {
-  margin-bottom: 15px; /* يضيف مسافة سفلية أسفل كل مجموعة من المدخلات */
-  text-align: right; /* يجعل النص داخل المجموعة (التسميات) محاذاة إلى اليمين */
+  margin-bottom: 15px;
+  text-align: right;
 }
 
 .form-group label {
-  display: block; /* يعرض التسميات ككتلة لتأخذ عرضًا كاملاً */
-  margin-bottom: 5px; /* يضيف مسافة سفلية أسفل التسمية */
+  display: block;
+  margin-bottom: 5px;
 }
 
 .login-section input {
-  width: 100%; /* يجعل عرض المدخلات 100% من عرض الحاوية الأم */
-  padding: 10px; /* يضيف مسافة داخلية حول النص داخل المدخلات */
-  border: 1px solid #ccc; /* يضيف حد رمادي فاتح حول المدخلات */
-  border-radius: 5px; /* يضيف زوايا دائرية للمدخلات */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: right;
 }
 
-.login-section button {
-  width: 100%; /* يجعل عرض الأزرار 100% من عرض الحاوية الأم */
-  padding: 10px; /* يضيف مسافة داخلية حول النص داخل الأزرار */
-  border: none; /* يزيل أي حدود للأزرار */
-  border-radius: 5px; /* يضيف زوايا دائرية للأزرار */
-  background: #28a745; /* يحدد لون خلفية الأزرار بالأخضر */
-  color: #fff; /* يحدد لون النص داخل الأزرار بالأبيض */
-  font-size: 16px; /* يحدد حجم الخط داخل الأزرار */
-  cursor: pointer; /* يغير شكل المؤشر عند التمرير فوق الأزرار */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
-.login-section button:hover {
-  background: #218838; /* يغير لون خلفية الأزرار عند التمرير فوقها */
+.user-type-button {
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f0f0f0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.home-icon {
-  position: absolute; /* يحدد موقع الأيقونة بالنسبة للحاوية الأم وليس في التدفق العادي للصفحة */
-  top: 10px; /* يحدد موقع الأيقونة 10 بكسل من الأعلى */
-  right: 10px; /* يحدد موقع الأيقونة 10 بكسل من اليمين */
-  width: 40px; /* يحدد عرض الأيقونة بـ 40 بكسل */
-  height: 40px; /* يحدد ارتفاع الأيقونة بـ 40 بكسل */
-  cursor: pointer; /* يغير شكل المؤشر عند التمرير فوق الأيقونة */
+.user-type-button img {
+  margin-right: 5px;
+  width: 24px;
+  height: 24px;
+}
+
+.user-type-button.active {
+  background: #d1c4e9;
+  border-color: #673ab7;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #673ab7;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background: #5e35b1;
 }

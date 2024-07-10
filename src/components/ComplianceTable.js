@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTable } from 'react-table';
 import styled from 'styled-components';
+import { getEncryptedData } from '../utils/encryption'; // استيراد دوال التشفير
 
 const Styles = styled.div`
   padding: 1rem;

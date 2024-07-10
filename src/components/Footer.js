@@ -4,7 +4,7 @@ import './Footer.css';
 function Footer() {
   return (
     <footer className="footer">
-      <p>&copy; 2024 Cyber Management System</p>
+      <p>&copy; نظام الادارة العامة للأمن السيبراني</p>
     </footer>
   );
 }

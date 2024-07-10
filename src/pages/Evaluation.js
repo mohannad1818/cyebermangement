@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ControlsContext } from '../contexts/ControlsContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Evaluation.css';
-
+import { getEncryptedData } from '../utils/encryption'; // استيراد دوال التشفير
 const Evaluation = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [rules, setRules] = useState([]);
   const { setControls } = useContext(ControlsContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedRules = JSON.parse(localStorage.getItem('rules'));
@@ -66,7 +67,7 @@ const Evaluation = () => {
   const renderRulesTable = () => {
     if (selectedCard && selectedCard.rules) {
       return (
-        <table className="commitment-table">
+        <table className={`commitment-table ecc${selectedCard.number}`}>
           <thead>
             <tr>
               <th>رقم الضابط</th>
@@ -130,6 +131,10 @@ const Evaluation = () => {
 
   return (
     <div className="evaluation-container" dir="rtl">
+      <div className="back-icon" onClick={() => navigate('/dashboard')}>
+        <i className="fas fa-arrow-left"></i>
+      </div>
+      <h1 className="title">تقييم </h1>
       <div className="evaluation-cards">
         <div className="evaluation-card" onClick={() => handleCardClick(1, 9)}>ECC.1</div>
         <div className="evaluation-card" onClick={() => handleCardClick(2, 15)}>ECC.2</div>

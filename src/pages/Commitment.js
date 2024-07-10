@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Commitment.css';
 import { ControlsContext } from '../contexts/ControlsContext';
-
+import { FaTachometerAlt } from 'react-icons/fa'; // استيراد الأيقونة
+import { getEncryptedData } from '../utils/encryption'; // استيراد دوال التشفير
 const Commitment = () => {
   const { setControls } = useContext(ControlsContext);
 
@@ -17,6 +18,7 @@ const Commitment = () => {
   const [department, setDepartment] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedRules = JSON.parse(localStorage.getItem('rules'));
@@ -103,7 +105,7 @@ const Commitment = () => {
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
     const newAttachments = files.map(file => {
-      return { name: file.name, data: URL.createObjectURL(file) };
+      return { name: file.name, data: URL.createObjectURL(file) }; // كود رفع الصور
     });
     setAttachments(prevAttachments => [...prevAttachments, ...newAttachments]);
   };
@@ -112,8 +114,15 @@ const Commitment = () => {
     rule.number.includes(searchTerm) || rule.status.includes(searchTerm)
   );
 
+  const handleBackClick = () => {
+    navigate('/dashboard'); // التوجيه إلى صفحة dashboard عند النقر على الأيقونة
+  };
+
   return (
     <div className="commitment-container" dir="rtl">
+      <div className="back-icon" onClick={handleBackClick}>
+        <FaTachometerAlt size={30} />
+      </div>
       <h1>الضوابط</h1>
       <div className="form-group">
         <label>رقم الضابط:</label>
@@ -135,11 +144,11 @@ const Commitment = () => {
       </div>
       <div className="form-group">
         <label>شرح الضابط:</label>
-        <input 
-          type="text" 
-          value={newRuleDescription} 
-          onChange={(e) => setNewRuleDescription(e.target.value)} 
+        <textarea
+          value={newRuleDescription}
+          onChange={(e) => setNewRuleDescription(e.target.value)}
           style={{ direction: 'rtl', textAlign: 'right' }}
+          rows="4"
         />
       </div>
       <div className="form-group">
@@ -174,7 +183,7 @@ const Commitment = () => {
         />
       </div>
       <div className="form-group">
-        <label>الادارات المعنية:</label>
+        <label>الإدارات المعنية:</label>
         <select 
           value={department} 
           onChange={(e) => setDepartment(e.target.value)} 
@@ -182,8 +191,12 @@ const Commitment = () => {
         >
           <option value="">اختر الإدارة</option>
           <option value="وكالة التحول الرقمي">وكالة التحول الرقمي</option>
+          <option value="وكالة المشاريع">وكالة المشاريع</option>
           <option value="وكالة الخدمات">وكالة الخدمات</option>
-          <option value="الإدارة العامة للمراجعة الداخلية">الإدارة العامة للمراجعة الداخلية</option>
+          <option value="الادارة العامة للموارد البشرية">الادارة العامة للموارد البشرية</option>
+          <option value="الادارة العامة للشؤون الإدارية والمالية">الادارة العامة للشؤون الإدارية والمالية</option>
+          <option value="الإدارة العامة للشؤون القانونية">الإدارة العامة للشؤون القانونية</option>
+          <option value="الإدارة العامة للأمن السيبراني">الإدارة العامة للأمن السيبراني</option>
         </select>
       </div>
       <div className="form-group">
@@ -221,7 +234,7 @@ const Commitment = () => {
             <th>رقم المجلد</th>
             <th>الحالة</th>
             <th>ملاحظات</th>
-            <th>الادارات المعنية</th>
+            <th>الإدارات المعنية</th>
             <th>الإثبات أو الإرفاق</th>
             <th>الإجراءات</th>
           </tr>

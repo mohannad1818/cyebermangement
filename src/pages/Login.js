@@ -1,100 +1,64 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // التأكد من أن التوجيه موجود فقط هنا
+import { useNavigate } from 'react-router-dom';
+import { findUser } from '../FirestoreService';
 import './Login.css';
-import homeIcon from '../assets/images/home.png';
+import userIcon from '../assets/images/user-icon.png'; // افترض أن أيقونات المستخدم والمشرف موجودة في مجلد الصور
+import adminIcon from '../assets/images/admin-icon.png'; 
 
 const Login = () => {
-  // حالات للمشرف
-  const [adminUsername, setAdminUsername] = useState('');
-  const [adminPassword, setAdminPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [userType, setUserType] = useState('مشرف');
 
-  // حالات للمستخدم
-  const [userUsername, setUserUsername] = useState('');
-  const [userPassword, setUserPassword] = useState('');
+  const navigate = useNavigate();
 
-  const navigate = useNavigate(); // استخدام navigate للتوجيه
-
-  const handleAdminLogin = () => {
-    // جلب المستخدمين المخزنين من localStorage
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-    // البحث عن مستخدم يتطابق مع بيانات المشرف
-    const user = storedUsers.find(
-      user => user.username === adminUsername && user.password === adminPassword && user.role === 'مشرف'
-    );
-
+  const handleLogin = async () => {
+    const collection = userType === 'مشرف' ? 'admins' : 'users';
+    const user = await findUser(collection, username, password, userType);
     if (user) {
-      // إذا كانت البيانات صحيحة، التوجيه إلى صفحة /dashboard
-      navigate('/dashboard');
+      navigate(userType === 'مشرف' ? '/dashboard' : '/compliance-status');
     } else {
-      // إذا كانت البيانات غير صحيحة، عرض رسالة خطأ
       alert('Invalid credentials');
     }
-  };
-
-  const handleUserLogin = () => {
-    // جلب المستخدمين المخزنين من localStorage
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-    // البحث عن مستخدم يتطابق مع بيانات المستخدم
-    const user = storedUsers.find(
-      user => user.username === userUsername && user.password === userPassword && user.role === 'مستخدم'
-    );
-
-    if (user) {
-      // إذا كانت البيانات صحيحة، التوجيه إلى صفحة حالة الالتزام
-      navigate('/compliance-status');
-    } else {
-      // إذا كانت البيانات غير صحيحة، عرض رسالة خطأ
-      alert('Invalid credentials');
-    }
-  };
-
-  const handleHomeRedirect = () => {
-    navigate('/');
   };
 
   return (
     <div className="login-container">
-      <img src={homeIcon} alt="Home" className="home-icon" onClick={handleHomeRedirect} />
-      <div className="login-section admin-section">
-        <h2>تسجيل دخول المشرف</h2>
+      <div className="login-section">
+        <div className="icon-container">
+          <img src={userType === 'مشرف' ? adminIcon : userIcon} alt="User Icon" className="user-icon" />
+        </div>
         <div className="form-group">
           <label>اسم المستخدم</label>
           <input 
             type="text" 
-            value={adminUsername} 
-            onChange={(e) => setAdminUsername(e.target.value)} 
+            value={username} 
+            onChange={(e) => setUsername(e.target.value)} 
+            dir="rtl" 
           />
         </div>
         <div className="form-group">
           <label>كلمة المرور</label>
           <input 
             type="password" 
-            value={adminPassword} 
-            onChange={(e) => setAdminPassword(e.target.value)} 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            dir="rtl" 
           />
         </div>
-        <button onClick={handleAdminLogin}>دخول</button>
-      </div>
-
-      <div className="login-section user-section">
-        <h2>تسجيل دخول المستخدم</h2>
-        <div className="form-group">
-          <label>اسم المستخدم</label>
-          <input 
-            type="text" 
-            value={userUsername} 
-            onChange={(e) => setUserUsername(e.target.value)} 
-          />
+        <div className="button-group">
+          <button className={`user-type-button ${userType === 'مشرف' ? 'active' : ''}`} onClick={() => setUserType('مشرف')}>
+            <img src={adminIcon} alt="Admin" />
+            مشرف
+          </button>
+          <button className={`user-type-button ${userType === 'مستخدم' ? 'active' : ''}`} onClick={() => setUserType('مستخدم')}>
+            <img src={userIcon} alt="User" />
+            مستخدم
+          </button>
         </div>
-        <div className="form-group">
-          <label>كلمة المرور</label>
-          <input 
-            type="password" 
-            value={userPassword} 
-            onChange={(e) => setUserPassword(e.target.value)} 
-          />
-        </div>
-        <button onClick={handleUserLogin}>دخول</button>
+        <button onClick={handleLogin} className="login-button">
+          تسجيل دخول
+        </button>
       </div>
     </div>
   );
