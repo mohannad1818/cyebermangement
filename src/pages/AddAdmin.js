@@ -12,7 +12,7 @@ const AddAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/users', {
+      await axios.post('http://localhost:5000/api/users', {// ابوحسن 
         username,
         password,
         role: 'admin',
