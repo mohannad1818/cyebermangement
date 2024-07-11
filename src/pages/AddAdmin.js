@@ -4,7 +4,7 @@ import './AddAdmin.css';
 import { getEncryptedData } from '../utils/encryption'; // استيراد دوال التشفير
 
 const AddAdmin = () => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('');//hgnhg.nd;
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
